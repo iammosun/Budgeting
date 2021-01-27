@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@100@300&display=swap" rel="stylesheet">
+    <title>Budgeting</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/scripts.js" defer></script>
+  </head>
+
+
+  <body>
+    <section class="fixed top-section">
+      <div class="budget-area">
+        <p>Available Budget in January2021:</p>
+        <p id="final-bal-container"><span class="sign">-</span><span class="final-balance">0.00</span></p>
+        <div class="in-and-exp-container">
+          <div class="details-container top-income">
+            <p>INCOME</p>
+            <div class="calc-container">
+              <p class="white"><span class="sign">+</span><span class="amount total-inc-value">0.00</span></p>
+              <p class="percent-calc"></p>
+            </div>
+          </div>
+          <div class="details-container top-expenses">
+            <p>EXPENSES</p>
+            <div class="calc-container">
+              <p class="white"><span class="sign">-</span><span class="amount total-exp-value">0.00</span></p>
+              <p class="total-percent percent-calc">--</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <section class="fixed bottom-section-container">
+      <div class="user-input-container">
+        <div class="user-input-area">
+          <label for="sign"></label>
+          <select name="sign" id="sign-dropdown">
+            <option value="plus">+</option>
+            <option value="minus">-</option>
+          </select>
+
+          <form id="add-description">
+            <input type="text" class="placeholder add-description" placeholder="Add description" />
+          </form>
+          <form id="value">
+            <input type="number" class="placeholder value" placeholder="Value" />
+          </form>
+
+          <div class="submit-btn-container">
+            <img class="submit-btn" src="images/okay.png" alt="submit button">
+          </div>
+        </div>
+      </div>
+
+      <div class="inc-and-exp-table">
+        <div class="inc-and-exp-table-container">
+          <div class="table income-table">
+            <h2 class="income-h2">INCOME</h2>
+            <ul class="table-ul income-ul">
+
+            </ul>
+          </div>
+
+          <div class="table expenses-table">
+            <h2 class="expenses-h2">EXPENSES</h2>
+            <ul class="table-ul expenses-ul">
+              <!-- <li class="table-li details-container">
+                <span class="list-item">hey</span>
+                <span class="calc-container">
+                  <span class="ul-amnt-container"><span class="sign"></span><span class="amount ul-amnt-value">0.00</span></span>
+                  <span class="percent-calc">2</span>
+                </span>
+              </li> -->
+            </ul>
+          </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
