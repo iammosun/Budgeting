@@ -80,18 +80,6 @@ function clickSubmit(){
 
 
 
-  /*This function takes the lis from each ul as argument, adds the amounts up and
-  returns the total to the top section*/
-  // let topTotal = 0;
-  // function total(listType){
-  //   listType.forEach(function(list){
-  //     topTotal = parseFloat(topTotal) + parseFloat(ulAmntValue.innerHTML);
-  //   });
-  //   return parseFloat(topTotal);
-  // }
-
-
-
   // this if statement is to avoid any empty or below 1 user input--------------
   if ((userValueInput >= 1) && (userdescriptionInput.length > 0)){
 
@@ -146,18 +134,71 @@ function clickSubmit(){
 
       totalPercentValue.innerHTML = parseInt(totalPercent) + '%';
 
-
     }
 
-      // delete will be here, finalBal will end everything----------------------
 
 
-     //updating the final balance------------------------------------------------
-     finalBal.innerHTML = (parseFloat(totalIncValue.innerHTML) - parseFloat(totalExpValue.innerHTML)).toFixed(2);
+// =====================================================================delete
+
+
+
+
+
+    //updating the final balance------------------------------------------------
+    finalBal.innerHTML = (parseFloat(totalIncValue.innerHTML) - parseFloat(totalExpValue.innerHTML)).toFixed(2);
 
   }else{
     alert("Insert a description and a value not less than 1");
   }
+
+
+
+  ulDeleteBtn.addEventListener('click', function(e){
+    // e.target.closest('li').remove();
+
+    if(e.target.closest('ul').className == 'expenses-ul'){
+      e.target.closest('li').remove();
+      const allPercents = document.querySelectorAll('.expenses-ul .percent-calc');
+      let totalPercent = 0;
+      let totalExpenses = 0;
+
+      function percentsCalc(){
+        allPercents.forEach(function(percent){
+          let expAmntValue = (percent.closest('span')).innerHTML;
+          totalExpenses = parseFloat(totalExpenses) + parseFloat(expAmntValue);
+          percent.innerHTML = (parseFloat(expAmntValue) * parseFloat(totalIncome)) / 100;
+          totalPercent = parseFloat(totalPercent) + parseFloat(percent.innerHTML);
+        });
+        return totalPercent;
+      }
+      percentsCalc();
+
+
+      totalExpValue.innerHTML = parseFloat(totalExpenses).toFixed(2);
+      totalPercentValue.innerHTML = parseInt(totalPercent) + '%';
+
+    }else{
+      e.target.closest('li').remove();
+      const allIncAmnt = document.querySelectorAll('.income-ul .ul-amnt-value');
+      let totalIncome = 0;
+
+      function totalIncCalc(){
+        allIncAmnt.forEach(function(incomeVal){
+          totalIncome = parseFloat(totalIncome) + parseFloat(incomeVal);
+        });
+        return totalIncome;
+      }
+      totalIncCalc();
+
+      totalIncValue.innerHTML = parseFloat(totalIncome).toFixed(2);
+    }
+
+    finalBal.innerHTML = (parseFloat(totalIncValue.innerHTML) - parseFloat(totalExpValue.innerHTML)).toFixed(2);
+  });
+
+
+
+
 
 
 
