@@ -125,7 +125,7 @@ body {
   min-height: 60%;
 }
 .user-input-container{
-  background-color: rgba(92, 100, 220, 0.3);
+  background-color: rgba(92, 100, 220, 0.4);
   border-bottom: 1px solid rgba(92, 100, 220, 0.1);
   border-top: 1px solid rgba(92, 100, 220, 0.1);
   display: grid;
