@@ -3,6 +3,9 @@ const totalIncValue = document.querySelector('.total-inc-value');
 const totalExpValue = document.querySelector('.total-exp-value');
 const totalPercentValue = document.querySelector('.total-percent');
 const finalBal = document.querySelector('.final-balance');
+const addDescription = document.forms['add-description'];
+const userValue = document.forms['value'];
+const submitBtn = document.querySelector('.submit-btn');
 
 
 
@@ -44,13 +47,56 @@ ulList.appendChild(ulCalcContainer);
 
 
 
+// to add user inputed info to either the Inc Table or Exp Table ===============
+submitBtn.addEventListener('click', clickSubmit);
+
+function clickSubmit{
+
+  // obtaining the values of the description and amount the user has imputed====
+  let userAmntInput = userValue.querySelector('input').value;
+  let userdescriptionInput = addDescription.querySelector('input').value;
+
+
+
+  // this if statement is to avoid any empty or below 1 user input==============
+  if ((userAmntInput >= 1) && (userdescriptionInput.length > 0)){
+
+
+    // this if statement is checking if the user has selected the + or - sign===
+    if (signDropdown.value == "plus"){
+
+      // Appending the information the user has inputed to the Income table-----
+      ulAmntValue.innerHTML = parseFloat(userAmntInput).toFixed(2);
+      ulListItem.innerHTML = userdescriptionInput;
+      incomeTable.appendChild(ulList);
+
+      calcAllBudget();
+
+    }else{
+
+      // Appending the information the user has inputed to the Exp table--------
+      ulAmntValue.innerHTML = parseFloat(userValueInput).toFixed(2);
+      ulListItem.innerHTML = userdescriptionInput;
+      expensesTable.appendChild(ulList);
+
+      calcAllBudget();
+
+    }
+
+  }else{
+    alert("Insert a description and a value not less than 1");
+  }
+
+}
+
+
 
 
 
 // Function that carry out all calculations in the budget=======================
 function calcAllBudget(){
 
-  // Array that contains all values in each of the Inc and Exp Table============
+  // Arrays containing all values in each of the Inc and Exp table==============
   const incValues = document.querySelectorAll('.income-ul .ul-amnt-value');
   const expValues = document.querySelectorAll('.expenses-ul .ul-amnt-value');
   const ulPercents = document.querySelectorAll('.expenses-ul .percent-calc');
@@ -72,7 +118,7 @@ function calcAllBudget(){
 
 
 
-  // to calculate "Total Expenses" at the top section & Individual Exp %========
+  // to calculate "Total Expenses" at the top section & Individual Exp % =======
   let expTotal = 0;
 
   function calcExpTotal(){
@@ -109,6 +155,5 @@ function calcAllBudget(){
 
   // to calculate the FINAL BALANCE at the top section==========================
   finalBal.innerHTML = (parseFloat(totalIncValue.innerHTML) - parseFloat(totalExpValue.innerHTML)).toFixed(2);
-
 
 }
