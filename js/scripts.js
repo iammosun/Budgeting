@@ -3,6 +3,7 @@ const totalIncValue = document.querySelector('.total-inc-value');
 const totalExpValue = document.querySelector('.total-exp-value');
 const totalPercentValue = document.querySelector('.total-percent');
 const finalBal = document.querySelector('.final-balance');
+const finalBalSign = document.querySelector('#final-bal-container .sign');
 const signDropdown = document.getElementById('sign-dropdown');
 const addDescription = document.querySelector('#add-description');
 const userValue = document.querySelector('#value');
@@ -23,26 +24,24 @@ function calculateBudgets(){
   const ulPercents = document.querySelectorAll('.expenses-ul .percent-calc');
 
 
+
   // to calculate the "Total Income" at the top section=========================
   let incTotal = 0;
-
   function calcIncTotal(){
     incValues.forEach(function(incValue){
       incTotal = parseFloat(incTotal) + parseFloat(incValue.innerHTML);
     });
     return incTotal;
   }
-
   calcIncTotal();
   totalIncValue.innerHTML = parseFloat(incTotal).toFixed(2);
+
 
 
   // to calculate Total Expenses, Percentages & Total Percentage================
   let expTotal = 0;
   let percentTotal = 0;
-
   function calcExpTotal(){
-
     expValues.forEach(function(expValue){
       expTotal = parseFloat(expTotal) + parseFloat(expValue.innerHTML);
 
@@ -55,16 +54,26 @@ function calculateBudgets(){
       percentTotal = parseFloat(percentTotal) + parseFloat(calcPercent);
     });
   }
-
   calcExpTotal();
   totalExpValue.innerHTML = parseFloat(expTotal).toFixed(2);
   totalPercentValue.innerHTML = parseFloat(percentTotal).toFixed(1) + '%';
 
 
 
+
   // to calculate the FINAL BALANCE at the top section==========================
-  finalBal.innerHTML = (parseFloat(totalIncValue.innerHTML) - parseFloat(totalExpValue.innerHTML)).toFixed(2);
+  let finalBalance = parseFloat(totalIncValue.innerHTML) - parseFloat(totalExpValue.innerHTML);
+
+  if (parseFloat(finalBalance) > 0){
+    finalBalSign.innerHTML = '+';
+  }else{
+    finalBalance *= -1;
+    finalBalSign.innerHTML = '-';
+  }
+
+  finalBal.innerHTML = parseFloat(finalBalance).toFixed(2);
 }
+
 
 
 
@@ -118,7 +127,6 @@ function submitInfo(){
 
     // this if statement is checking if the user has selected the + or - sign===
     if (signDropdown.value == "plus"){
-
       // Appending the information the user has inputed to the Income table-----
       ulAmntValue.innerHTML = parseFloat(userAmntInput).toFixed(2);
       ulListItem.innerHTML = userdescriptionInput;
@@ -127,7 +135,6 @@ function submitInfo(){
       calculateBudgets();
 
     }else{
-
       // Appending the information the user has inputed to the Exp table--------
       ulAmntValue.innerHTML = parseFloat(userAmntInput).toFixed(2);
       ulListItem.innerHTML = userdescriptionInput;
@@ -140,12 +147,9 @@ function submitInfo(){
 
     // the delete button function===============================================
     ulDeleteBtn.addEventListener('click', function(e){
-
       e.target.closest('li').remove();
       calculateBudgets();
-
     });
-
 
 
   }else{
