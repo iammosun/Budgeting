@@ -1,4 +1,6 @@
-// constants====================================================================
+
+/* constants====================================================================
+==============================================================================*/
 const totalIncValue = document.querySelector('.total-inc-value');
 const totalExpValue = document.querySelector('.total-exp-value');
 const totalPercentValue = document.querySelector('.total-percent');
@@ -15,9 +17,9 @@ const expensesTable = document.querySelector('.expenses-ul');
 
 
 
-// function for all the calculations in the budget==============================
+/*function for all the calculations in the budget===============================
+==============================================================================*/
 function calculateBudgets(){
-
   // Arrays containing all values of the Inc and Exp table======================
   const incValues = document.querySelectorAll('.income-ul .ul-amnt-value');
   const expValues = document.querySelectorAll('.expenses-ul .ul-amnt-value');
@@ -60,7 +62,6 @@ function calculateBudgets(){
 
 
 
-
   // to calculate the FINAL BALANCE at the top section==========================
   let finalBalance = parseFloat(totalIncValue.innerHTML) - parseFloat(totalExpValue.innerHTML);
 
@@ -72,19 +73,23 @@ function calculateBudgets(){
   }
 
   finalBal.innerHTML = parseFloat(finalBalance).toFixed(2);
+
 }
 
 
 
 
 
-// to add the user inputed info to either the Inc Table or Exp Table ===========
+
+/*to add the user inputed info to either the Inc Table or Exp Table ==========
+==============================================================================*/
 submitBtn.addEventListener('click', submitInfo);
 function submitInfo(){
 
   // obtaining the values of the description and amount the user has imputed====
   let userAmntInput = userValue.querySelector('input').value;
   let userdescriptionInput = addDescription.querySelector('input').value;
+
 
 
   // to create new elements for the income and expenses table===================
@@ -96,6 +101,7 @@ function submitInfo(){
   const sign = document.createElement('span');
   const ulAmntValue = document.createElement('span');
   const ulPercent = document.createElement('span');
+
 
 
   // to add classes to the newly created elements===============================
@@ -110,6 +116,7 @@ function submitInfo(){
   ulDeleteBtn.setAttribute('src', 'images/bin.png');
 
 
+
   // to append the new elements to the document=================================
   ulAmntContainer.appendChild(ulAmntValue);
   ulAmntContainer.appendChild(sign);
@@ -118,7 +125,6 @@ function submitInfo(){
   ulCalcContainer.appendChild(ulDeleteBtn);
   ulList.appendChild(ulListItem);
   ulList.appendChild(ulCalcContainer);
-
 
 
 
@@ -133,7 +139,6 @@ function submitInfo(){
       incomeTable.appendChild(ulList);
 
       calculateBudgets();
-
     }else{
       // Appending the information the user has inputed to the Exp table--------
       ulAmntValue.innerHTML = parseFloat(userAmntInput).toFixed(2);
@@ -150,6 +155,7 @@ function submitInfo(){
       e.target.closest('li').remove();
       calculateBudgets();
     });
+
 
 
   }else{
