@@ -131,7 +131,7 @@ body {
   display: grid;
   place-items: center;
 }
-.user-input-area{
+#user-input-area{
   padding: 0.5em;
   min-width: 50%;
   display: grid;
