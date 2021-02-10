@@ -15,13 +15,12 @@ const expensesTable = document.querySelector('.expenses-ul');
 
 
 // function for all the calculations in the budget==============================
-function calcAllBudget(){
+function calculateBudgets(){
 
   // Arrays containing all values of the Inc and Exp table======================
   const incValues = document.querySelectorAll('.income-ul .ul-amnt-value');
   const expValues = document.querySelectorAll('.expenses-ul .ul-amnt-value');
   const ulPercents = document.querySelectorAll('.expenses-ul .percent-calc');
-
 
 
   // to calculate the "Total Income" at the top section=========================
@@ -33,48 +32,39 @@ function calcAllBudget(){
     });
     return incTotal;
   }
+
   calcIncTotal();
-
   totalIncValue.innerHTML = parseFloat(incTotal).toFixed(2);
-
 
 
   // to calculate Total Expenses, Percentages & Total Percentage================
   let expTotal = 0;
+  let percentTotal = 0;
 
   function calcExpTotal(){
-    let percentTotal = 0;
 
     expValues.forEach(function(expValue){
-
       expTotal = parseFloat(expTotal) + parseFloat(expValue.innerHTML);
-
 
       // to calculate the percentage for each Exp value=========================
       let calcPercent = (parseFloat(expValue.innerHTML) * 100) / parseFloat(incTotal);
       let percentValue = expValue.nextElementSibling;
       percentValue.innerHTML = parseFloat(calcPercent).toFixed(1) + "%";
 
-
       // to calculate the total percentage at the top section===================
       percentTotal = parseFloat(percentTotal) + parseFloat(calcPercent);
-      totalPercentValue.innerHTML = parseFloat(percentTotal).toFixed(1) + '%';
-
     });
-    return expTotal;
   }
 
   calcExpTotal();
-
   totalExpValue.innerHTML = parseFloat(expTotal).toFixed(2);
+  totalPercentValue.innerHTML = parseFloat(percentTotal).toFixed(1) + '%';
 
 
 
   // to calculate the FINAL BALANCE at the top section==========================
   finalBal.innerHTML = (parseFloat(totalIncValue.innerHTML) - parseFloat(totalExpValue.innerHTML)).toFixed(2);
-
 }
-
 
 
 
@@ -88,7 +78,6 @@ function submitInfo(){
   let userdescriptionInput = addDescription.querySelector('input').value;
 
 
-
   // to create new elements for the income and expenses table===================
   const ulList = document.createElement('li');
   const ulListItem = document.createElement('span');
@@ -98,7 +87,6 @@ function submitInfo(){
   const sign = document.createElement('span');
   const ulAmntValue = document.createElement('span');
   const ulPercent = document.createElement('span');
-
 
 
   // to add classes to the newly created elements===============================
@@ -113,7 +101,6 @@ function submitInfo(){
   ulDeleteBtn.setAttribute('src', 'images/bin.png');
 
 
-
   // to append the new elements to the document=================================
   ulAmntContainer.appendChild(ulAmntValue);
   ulAmntContainer.appendChild(sign);
@@ -126,10 +113,8 @@ function submitInfo(){
 
 
 
-
   // this if statement is to avoid any empty or below 1 user input==============
   if ((userAmntInput >= 1) && (userdescriptionInput.length > 0)){
-
 
     // this if statement is checking if the user has selected the + or - sign===
     if (signDropdown.value == "plus"){
@@ -139,7 +124,7 @@ function submitInfo(){
       ulListItem.innerHTML = userdescriptionInput;
       incomeTable.appendChild(ulList);
 
-      calcAllBudget();
+      calculateBudgets();
 
     }else{
 
@@ -148,12 +133,22 @@ function submitInfo(){
       ulListItem.innerHTML = userdescriptionInput;
       expensesTable.appendChild(ulList);
 
-      calcAllBudget();
-
+      calculateBudgets();
     }
+
+
+
+    // the delete button function===============================================
+    ulDeleteBtn.addEventListener('click', function(e){
+
+      e.target.closest('li').remove();
+      calculateBudgets();
+
+    });
+
+
 
   }else{
     alert("PLease insert description and a value not less than 1");
   }
-
 }
