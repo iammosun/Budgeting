@@ -23,6 +23,7 @@ html {
 
 h2 {
   font-size: 1.2rem;
+  padding: 0.8rem;
 }
 
 .income-h2 {
@@ -44,11 +45,10 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  position: fixed;
+  position: absolute;
   top: 0;
-  left: 0;
   width: 100%;
-  min-height: 40%;
+  height: 40%;
   display: grid;
   place-items: center;
 }
@@ -70,7 +70,8 @@ body {
   background-color: white;
 }
 .details-container{
-  padding: 1em;
+  margin: 0;
+  padding: 0.6em;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -93,6 +94,7 @@ body {
 .white{
   color: white;
   font-size: 1.1em;
+  margin: auto;
 }
 .sign{
   margin-right: 0.4em;
@@ -101,8 +103,9 @@ body {
   background-color: rgba(255, 255, 255, 0.2);
   display: grid;
   place-items: center;
-  height: 1.5em;
-  width: 3.4em;
+  height: 2em;
+  width: 4em;
+  font-size: 0.7em;
   border-radius: 0.2em;
   margin-left: 0.3em;
 }
@@ -118,14 +121,14 @@ body {
 
 /* bottom section------------------------------------------------------------ */
 .bottom-section-container{
-  position: fixed;
-  top: 40%;
-  left: 0;
+  background-image: linear-gradient(to right, rgba(92, 149, 255, 0.2), rgba(237, 1, 1, 0.1));
+  position: absolute;
+  height: 60%;
   width: 100%;
-  min-height: 60%;
+  top: 40%;
 }
 .user-input-container{
-  background-color: rgba(92, 100, 220, 0.4);
+  background-color: rgba(92, 100, 220, 0.2);
   border-bottom: 1px solid rgba(92, 100, 220, 0.1);
   border-top: 1px solid rgba(92, 100, 220, 0.1);
   display: grid;
@@ -174,41 +177,49 @@ padding-left: 0.8em;
 .inc-and-exp-table{
   display: grid;
   place-items: center;
-  margin-top: 2em;
+  margin-top: 3em;
 }
 .inc-and-exp-table-container{
-  /* background-color: red; */
   width: 70%;
   display: grid;
-  grid-template-columns: 49% 49%;
-  grid-column-gap: 2%;
+  grid-template-columns: 48% 48%;
+  grid-column-gap: 4%;
 }
 .inc-and-exp-table ul {
   list-style-type: none;
 }
+
+.table-ul li:first-child{
+  border-top: 1px solid rgba(128, 128, 128, 0.4);
+}
+
 /*it's long because it's easier here than adding a class to this element in js*/
 .income-table .calc-container .percent-calc{
   display: none;
 }
 .table .percent-calc{
+  color: white;
   background-color: red;
   display: grid;
   place-items: center;
 }
 .table li{
+  height: 3em;
   cursor: pointer;
-  border-bottom: 1px solid gray;
-  /* border-top: 1px solid gray; */
-  color: gray;
-  margin-top: 0.9em;
+  padding: 0 0.8rem;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.4);
+  color: rgba(0, 0, 0, 0.7);
 }
 .ul-amnt-container{
   display: grid;
   place-items: center;
-  transition: all 0.1s ease-in-out;
+  margin: 0;
+  transition: all 0.3s ease-in-out;
 }
+
 .delete-btn {
   display: none;
+  margin: auto;
   height: 1rem;
   width: 1rem;
   cursor: pointer;
@@ -217,5 +228,11 @@ padding-left: 0.8em;
   display: block;
 }
 .table li:hover .ul-amnt-container{
-  margin-right: 2em;
+  margin-right: 0.4em;
+}
+.table .percent-calc{
+  transition: all 0.3s ease-in-out;
+}
+.table li:hover .percent-calc{
+  margin-right: 0.6em;
 }

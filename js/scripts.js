@@ -12,6 +12,7 @@ const userValue = document.querySelector('#value');
 const submitBtn = document.querySelector('.submit-btn');
 const incomeTable = document.querySelector('.income-ul');
 const expensesTable = document.querySelector('.expenses-ul');
+const h2s = document.querySelectorAll('h2');
 
 
 
@@ -49,8 +50,14 @@ function calculateBudgets(){
 
       // to calculate the percentage for each Exp value=========================
       let calcPercent = (parseFloat(expValue.innerHTML) * 100) / parseFloat(incTotal);
-      let percentValue = expValue.nextElementSibling;
-      percentValue.innerHTML = parseFloat(calcPercent).toFixed(1) + "%";
+      let percentValue = expValue.parentElement.nextElementSibling;
+
+      // avoiding percentage values less than 0=================================
+      if (parseFloat(calcPercent) > 0){
+        percentValue.innerHTML = parseFloat(calcPercent).toFixed(1) + "%";
+      }else{
+        percentValue.innerHTML = '--';
+      }
 
       // to calculate the total percentage at the top section===================
       percentTotal = parseFloat(percentTotal) + parseFloat(calcPercent);
@@ -81,11 +88,11 @@ function calculateBudgets(){
 
 
 
+
 /*to add the user inputed info to either the Inc Table or Exp Table ==========
 ==============================================================================*/
 submitBtn.addEventListener('click', submitInfo);
 function submitInfo(){
-
   // obtaining the values of the description and amount the user has imputed====
   let userAmntInput = userValue.querySelector('input').value;
   let userdescriptionInput = addDescription.querySelector('input').value;
@@ -118,8 +125,9 @@ function submitInfo(){
 
 
   // to append the new elements to the document=================================
-  ulAmntContainer.appendChild(ulAmntValue);
+
   ulAmntContainer.appendChild(sign);
+  ulAmntContainer.appendChild(ulAmntValue);
   ulCalcContainer.appendChild(ulAmntContainer);
   ulCalcContainer.appendChild(ulPercent);
   ulCalcContainer.appendChild(ulDeleteBtn);
@@ -133,6 +141,8 @@ function submitInfo(){
 
     // this if statement is checking if the user has selected the + or - sign===
     if (signDropdown.value == "plus"){
+      // h2s[0].style.borderBottom = '1px solid rgba(128, 128, 128, 0.4)';
+
       // Appending the information the user has inputed to the Income table-----
       ulAmntValue.innerHTML = parseFloat(userAmntInput).toFixed(2);
       ulListItem.innerHTML = userdescriptionInput;
@@ -140,6 +150,8 @@ function submitInfo(){
 
       calculateBudgets();
     }else{
+      // h2s[1].style.borderBottom = '1px solid rgba(128, 128, 128, 0.4)';
+
       // Appending the information the user has inputed to the Exp table--------
       ulAmntValue.innerHTML = parseFloat(userAmntInput).toFixed(2);
       ulListItem.innerHTML = userdescriptionInput;
