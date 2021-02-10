@@ -161,4 +161,7 @@ function submitInfo(){
   }else{
     alert("PLease insert description and a value not less than 1");
   }
+
+
+  document.forms['user-input-area'].reset();
 }
