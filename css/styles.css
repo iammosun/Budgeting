@@ -1,24 +1,24 @@
-/* colors----------------------------------------------------------------------
+
+/* colors=======================================================================
 red: rgba(92, 149, 255, 1);
 gray: rgba(128, 128, 128, 0.6);
 faint white: rgba(255, 255, 255, 0.5);
 blue: rgba(92, 149, 255, 0.8); */
 
 
-html {
-  box-sizing: border-box;
-}
-*, *:before, *:after {
-  box-sizing: inherit;
-}
-
-
-/* Global Styles--------------------------------------------------------------*/
+/*Global Styles===============================================================*/
 * {
   margin: 0;
   padding: 0;
   font-family: 'Open Sans', sans-serif;
   font-weight: 100;
+}
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
 }
 
 h2 {
@@ -39,7 +39,9 @@ body {
 }
 
 
-/* top section--------------------------------------------------------------- */
+
+
+/* top section================================================================*/
 .top-section {
   background-image: url(../images/pencils.jpg);
   background-repeat: no-repeat;
@@ -59,47 +61,57 @@ body {
   display: grid;
   place-items: center;
 }
-.budget-area > p{
+
+.budget-area > p {
   font-size: 1.1rem;
 }
-.in-and-exp-container{
+
+.in-and-exp-container {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 0.6em;
   background-color: white;
 }
-.details-container{
+
+.details-container {
   margin: 0;
   padding: 0.6em;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.details-container > p{
+
+.details-container > p {
   font-size: 0.75rem;
 }
-.calc-container{
+
+.calc-container {
   display: flex;
   gap: 0.5em;
 }
-.top-income{
+
+.top-income {
   background-color: rgba(92, 149, 255, 0.8);
   box-shadow: 0 0 3px 1px rgba(128, 128, 128, 1);
 }
-.top-expenses{
+
+.top-expenses {
   background-color: rgba(237, 1, 1, 0.8);
   box-shadow: 0 0 3px 1px rgba(128, 128, 128, 1);
 }
-.white{
+
+.white {
   color: white;
   font-size: 1.1em;
   margin: auto;
 }
-.sign{
+
+.sign {
   margin-right: 0.4em;
 }
-.percent-calc{
+
+.percent-calc {
   background-color: rgba(255, 255, 255, 0.2);
   display: grid;
   place-items: center;
@@ -109,108 +121,126 @@ body {
   border-radius: 0.2em;
   margin-left: 0.3em;
 }
-.top-income .percent-calc{
+
+.top-income .percent-calc {
   visibility: hidden;
 }
-#final-bal-container{
+
+#final-bal-container {
   font-size: 3rem;
 }
 
 
 
 
-/* bottom section------------------------------------------------------------ */
-.bottom-section-container{
+
+/* bottom section=============================================================*/
+.bottom-section-container {
   background-image: linear-gradient(to right, rgba(92, 149, 255, 0.2), rgba(237, 1, 1, 0.1));
   position: absolute;
   height: 60%;
   width: 100%;
   top: 40%;
 }
-.user-input-container{
+
+.user-input-container {
   background-color: rgba(92, 100, 220, 0.2);
   border-bottom: 1px solid rgba(92, 100, 220, 0.1);
   border-top: 1px solid rgba(92, 100, 220, 0.1);
   display: grid;
   place-items: center;
 }
-#user-input-area{
+
+#user-input-area {
   padding: 0.5em;
   min-width: 50%;
   display: grid;
   grid-template-columns: auto 1fr 22% auto;
 }
-.placeholder, #sign-dropdown{
+
+.placeholder, #sign-dropdown {
   height: 3.5em;
   border: 1px solid rgba(92, 149, 255, 0.3);
   border-radius: 4px;
 }
-#sign-dropdown, #add-description, #value{
+
+#sign-dropdown, #add-description, #value {
   color: gray;
   margin-right: 1em;
 }
-#sign-dropdown{
+
+#sign-dropdown {
   grid-column: 1 / 2;
   padding: 0.5em;
 }
-#add-description{
+
+#add-description {
   grid-column: 2 / 3;
 }
-#value{
+
+#value {
   grid-column: 3 / 4;
 }
-.submit-btn-container{
+
+.submit-btn-container {
   display: grid;
   place-items: center;
   padding: 0 1em;
 }
-.submit-btn{
+
+.submit-btn {
   width: 1.7rem;
   height: 1.7rem;
   cursor: pointer;
 }
-.placeholder{
+
+.placeholder {
 width: 100%;
 padding-left: 0.8em;
 }
 
-.inc-and-exp-table{
+.inc-and-exp-table {
   display: grid;
   place-items: center;
   margin-top: 3em;
 }
-.inc-and-exp-table-container{
+
+.inc-and-exp-table-container {
   width: 70%;
   display: grid;
   grid-template-columns: 48% 48%;
   grid-column-gap: 4%;
 }
+
 .inc-and-exp-table ul {
   list-style-type: none;
 }
 
-.table-ul li:first-child{
+.table-ul li:first-child {
   border-top: 1px solid rgba(128, 128, 128, 0.4);
 }
 
 /*it's long because it's easier here than adding a class to this element in js*/
-.income-table .calc-container .percent-calc{
+.income-table .calc-container .percent-calc {
   display: none;
 }
-.table .percent-calc{
+
+.table .percent-calc {
   color: white;
   background-color: red;
   display: grid;
   place-items: center;
 }
-.table li{
+
+.table li {
   height: 3em;
   cursor: pointer;
   padding: 0 0.8rem;
   border-bottom: 1px solid rgba(128, 128, 128, 0.4);
   color: rgba(0, 0, 0, 0.7);
 }
-.ul-amnt-container{
+
+.ul-amnt-container {
   display: grid;
   place-items: center;
   margin: 0;
@@ -224,15 +254,19 @@ padding-left: 0.8em;
   width: 1rem;
   cursor: pointer;
 }
-.table li:hover .delete-btn{
+
+.table li:hover .delete-btn {
   display: block;
 }
-.table li:hover .ul-amnt-container{
+
+.table li:hover .ul-amnt-container {
   margin-right: 0.4em;
 }
-.table .percent-calc{
+
+.table .percent-calc {
   transition: all 0.3s ease-in-out;
 }
-.table li:hover .percent-calc{
+
+.table li:hover .percent-calc {
   margin-right: 0.6em;
 }

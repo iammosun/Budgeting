@@ -18,9 +18,10 @@ const h2s = document.querySelectorAll('h2');
 
 
 
-/*function for all the calculations in the budget===============================
+/*this function does all Calculations in the budget=============================
 ==============================================================================*/
 function calculateBudgets(){
+
   // Arrays containing all values of the Inc and Exp table======================
   const incValues = document.querySelectorAll('.income-ul .ul-amnt-value');
   const expValues = document.querySelectorAll('.expenses-ul .ul-amnt-value');
@@ -53,16 +54,16 @@ function calculateBudgets(){
       let percentValue = expValue.parentElement.nextElementSibling;
 
       // avoiding percentage values less than 0=================================
-      if (parseFloat(calcPercent) > 0){
-        percentValue.innerHTML = parseFloat(calcPercent).toFixed(1) + "%";
-      }else{
+      if (calcPercent == 'Infinity'){
         percentValue.innerHTML = '--';
+        percentTotal = 0;
+      }else{
+        percentValue.innerHTML = parseFloat(calcPercent).toFixed(1) + "%";
+        percentTotal = parseFloat(percentTotal) + parseFloat(calcPercent);
       }
-
-      // to calculate the total percentage at the top section===================
-      percentTotal = parseFloat(percentTotal) + parseFloat(calcPercent);
     });
   }
+
   calcExpTotal();
   totalExpValue.innerHTML = parseFloat(expTotal).toFixed(2);
   totalPercentValue.innerHTML = parseFloat(percentTotal).toFixed(1) + '%';
@@ -71,7 +72,6 @@ function calculateBudgets(){
 
   // to calculate the FINAL BALANCE at the top section==========================
   let finalBalance = parseFloat(totalIncValue.innerHTML) - parseFloat(totalExpValue.innerHTML);
-
   if (parseFloat(finalBalance) > 0){
     finalBalSign.innerHTML = '+';
   }else{
@@ -80,7 +80,6 @@ function calculateBudgets(){
   }
 
   finalBal.innerHTML = parseFloat(finalBalance).toFixed(2);
-
 }
 
 
@@ -88,18 +87,17 @@ function calculateBudgets(){
 
 
 
-
-/*to add the user inputed info to either the Inc Table or Exp Table ==========
+/*this function adds User inputed info to either the Inc Table or Exp Table ====
 ==============================================================================*/
 submitBtn.addEventListener('click', submitInfo);
 function submitInfo(){
-  // obtaining the values of the description and amount the user has imputed====
+  //to obtain the values of the description and amount the user has imputed=====
   let userAmntInput = userValue.querySelector('input').value;
   let userdescriptionInput = addDescription.querySelector('input').value;
 
 
 
-  // to create new elements for the income and expenses table===================
+  // to create new elements for the income and expenses lists===================
   const ulList = document.createElement('li');
   const ulListItem = document.createElement('span');
   const ulCalcContainer = document.createElement('span');
@@ -125,7 +123,6 @@ function submitInfo(){
 
 
   // to append the new elements to the document=================================
-
   ulAmntContainer.appendChild(sign);
   ulAmntContainer.appendChild(ulAmntValue);
   ulCalcContainer.appendChild(ulAmntContainer);
@@ -141,18 +138,17 @@ function submitInfo(){
 
     // this if statement is checking if the user has selected the + or - sign===
     if (signDropdown.value == "plus"){
-      // h2s[0].style.borderBottom = '1px solid rgba(128, 128, 128, 0.4)';
 
-      // Appending the information the user has inputed to the Income table-----
+      //to append the user inputed info to the Income table====================
       ulAmntValue.innerHTML = parseFloat(userAmntInput).toFixed(2);
       ulListItem.innerHTML = userdescriptionInput;
       incomeTable.appendChild(ulList);
 
       calculateBudgets();
-    }else{
-      // h2s[1].style.borderBottom = '1px solid rgba(128, 128, 128, 0.4)';
 
-      // Appending the information the user has inputed to the Exp table--------
+    }else{
+
+      //to append the user inputed info to the Exp table========================
       ulAmntValue.innerHTML = parseFloat(userAmntInput).toFixed(2);
       ulListItem.innerHTML = userdescriptionInput;
       expensesTable.appendChild(ulList);
@@ -160,20 +156,20 @@ function submitInfo(){
       calculateBudgets();
     }
 
-
-
-    // the delete button function===============================================
-    ulDeleteBtn.addEventListener('click', function(e){
-      e.target.closest('li').remove();
-      calculateBudgets();
-    });
-
-
-
   }else{
     alert("PLease insert description and a value not less than 1");
   }
 
 
+
+  //to delete the list when the DELETE button is clicked========================
+  ulDeleteBtn.addEventListener('click', function(e){
+    e.target.closest('li').remove();
+    calculateBudgets();
+  });
+
+
+
+  // to Reset/Clear all forms after the submit button is clicked================
   document.forms['user-input-area'].reset();
 }
