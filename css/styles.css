@@ -167,11 +167,6 @@ body {
 #sign-dropdown, #add-description, #value {
   color: gray;
   margin-right: 1em;
-  /* border: 1px solid red; */
-}
-
-.placeholder:focus{
-  border: 1px solid red;
 }
 
 #sign-dropdown {
