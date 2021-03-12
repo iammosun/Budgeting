@@ -18,7 +18,7 @@ blue: rgba(92, 149, 255, 0.8); */
 }
 
 h2 {
-  font-size: 1.2rem;
+  font-size: 1rem;
   padding: 0.8rem;
 }
 
@@ -50,12 +50,11 @@ body {
 }
 
 .budget-title {
-  font-size: 1.1em;
+  font-size: 1em;
 }
 
 .in-and-exp-container {
-  width: 90%;
-  min-width: 40%;
+  min-width: 70%;
   height: 100%;
   display: flex;
   justify-content: space-between;
@@ -82,12 +81,12 @@ body {
 }
 
 .top-income {
-  background-color: rgba(92, 149, 255, 0.8);
+  background-color: rgba(92, 149, 255, 0.6);
   box-shadow: 0 0 3px 1px rgba(128, 128, 128, 1);
 }
 
 .top-expenses {
-  background-color: rgba(237, 1, 1, 0.8);
+  background-color: rgba(237, 1, 1, 0.6);
   box-shadow: 0 0 3px 1px rgba(128, 128, 128, 1);
 }
 
