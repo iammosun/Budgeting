@@ -1,5 +1,4 @@
 # Budgeting
 
-click below to visit web page
+[visit](https://iammosun.github.io/Budgeting) webpage.
 
-https://iammosun.github.io/Budgeting
