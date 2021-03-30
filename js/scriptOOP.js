@@ -261,4 +261,4 @@ class Budget {
     
 
 
-const budgetObject = new Budget();
+const budget = new Budget();
