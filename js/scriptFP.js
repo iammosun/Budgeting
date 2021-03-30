@@ -18,6 +18,7 @@ const h2s = document.querySelectorAll('h2');
 
 
 
+
 /*this function does all Calculations in the budget=============================
 ==============================================================================*/
 function calculateBudgets(){
