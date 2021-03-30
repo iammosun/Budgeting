@@ -3,8 +3,8 @@
 [visit](https://iammosun.github.io/Budgeting) webpage.
 
 
-#Built With
+# Built With
 
- ###-HTML5
- ###-CSS3
- ###-JavaScript
+ ### -HTML5
+ ### -CSS3
+ ### -JavaScript
