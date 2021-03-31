@@ -31,9 +31,9 @@ class Budget {
     incVals = [];
     expVals = [];
     ulPercent = [];
-    incTot = '';
-    expTot = '';
-    percentTot = '';
+    incTot;
+    expTot;
+    percentTot;
 
 
     constructor() {
