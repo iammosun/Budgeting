@@ -14,6 +14,7 @@ const finalBal = document.querySelector('.final-balance');
 const finalBalSign = document.querySelector('#final-bal-container .sign');
 const signDropdown = document.getElementById('sign-dropdown');
 const addDescription = document.querySelector('#add-description');
+const userDescription = document.querySelector('.add-description');
 const userValue = document.querySelector('#value');
 const submitBtn = document.querySelector('.submit-btn');
 const incomeTable = document.querySelector('.income-ul');
