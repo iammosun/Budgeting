@@ -24,8 +24,7 @@ const h2s = document.querySelectorAll('h2');
 
 
 
-/*The main class for the App/Budget==================================================
-===================================================================================*/
+// Main Class for the App
 class Budget {
 
     incVals = [];
