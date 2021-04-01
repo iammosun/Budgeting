@@ -134,22 +134,22 @@ function submitInfo(){
 
 
 
-  // this if statement is to avoid any empty or below 1 user input==============
-  if ((userAmntInput >= 1) && (userdescriptionInput.length > 0)){
+  // validate user input
+  if ((userAmntInput >= 1) && (userdescriptionInput.length > 0) && (!userdescriptionInput === '')) {
 
-    // this if statement is checking if the user has selected the + or - sign===
+    // check sign and append info to DOM
     if (signDropdown.value == "plus"){
 
-      //to append the user inputed info to the Income table====================
+      // append input to the Income table
       ulAmntValue.innerHTML = parseFloat(userAmntInput).toFixed(2);
       ulListItem.innerHTML = userdescriptionInput;
       incomeTable.appendChild(ulList);
 
       calculateBudgets();
 
-    }else{
+    } else {
 
-      //to append the user inputed info to the Exp table========================
+      // append input to Exp table
       ulAmntValue.innerHTML = parseFloat(userAmntInput).toFixed(2);
       ulListItem.innerHTML = userdescriptionInput;
       expensesTable.appendChild(ulList);
@@ -163,7 +163,7 @@ function submitInfo(){
 
 
 
-  //to delete the list when the DELETE button is clicked========================
+  // delete the list when the DELETE button is clicked
   ulDeleteBtn.addEventListener('click', function(e){
     e.target.closest('li').remove();
     calculateBudgets();
@@ -171,6 +171,6 @@ function submitInfo(){
 
 
 
-  // to Reset/Clear all forms after the submit button is clicked================
+  // Reset/Clear all forms after the submit button is clicked
   document.forms['user-input-area'].reset();
 }
