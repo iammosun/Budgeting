@@ -24,7 +24,7 @@ const h2s = document.querySelectorAll('h2');
 
 
 
-// Main Class for the App
+// ===================================MAIN APP CLASS==================================
 class Budget {
 
     incVals = [];
@@ -43,7 +43,7 @@ class Budget {
 
 
 
-    // adding up the Income values at the table
+    // add up Income values at the table
     calcIncTotal() {
 
         this.incTot = 0;
@@ -58,7 +58,7 @@ class Budget {
 
 
 
-    // updating the Total Income at the top section
+    // update Total Income at the top section
     incomeTotal() {
 
         this.calcIncTotal();
@@ -68,7 +68,7 @@ class Budget {
 
 
 
-    // adding up the Expenses and percentage values at the table
+    // add up Expenses and percentage values at the table
     calcExpTotal() {
 
         this.expTot = 0;
@@ -88,13 +88,13 @@ class Budget {
 
 
 
-    // calculating percentages at the table and adding them to the Total percentage
+    // calculate percentages at the table and adding them to the Total percentage
     calcEachPercent(exp) {
 
         let calcPercent = (parseFloat(exp.innerHTML) * 100) / parseFloat(this.incTot);
         let percentValue = exp.parentElement.nextElementSibling;
 
-        // avoiding percentage values less than 0
+        // avoid percentage values less than 0
         if (calcPercent == 'Infinity') {
 
             percentValue.innerHTML = '--';
@@ -104,14 +104,14 @@ class Budget {
 
             percentValue.innerHTML = parseFloat(calcPercent).toFixed(1) + "%";
 
-            // adding the list percentage to the total percentage
+            // add list percentage to the total percentage
             this.percentTot = parseFloat(this.percentTot) + parseFloat(calcPercent);
         }
     }
 
 
 
-    // updating the Total Expenses and Total Percentage at the top section
+    // update Total Expenses and Total Percentage at the top section
     expensesTotal() {
 
         this.calcExpTotal();
@@ -123,7 +123,7 @@ class Budget {
 
 
 
-    // calculating the FINAL BALANCE at the top section
+    // calculate FINAL BALANCE at the top section
     finalBalance() {
 
         let finalBalance = parseFloat(totalIncValue.innerHTML) - parseFloat(totalExpValue.innerHTML);
@@ -143,7 +143,7 @@ class Budget {
 
 
 
-    // this is the method called to update the OVERALL Budget
+    // Method called to update the OVERALL Budget
     updateBudget() {
 
         this.incomeTotal();
@@ -154,7 +154,7 @@ class Budget {
 
 
 
-    // Reseting/Clearing all forms when SUBMIT button is clicked
+    // Reset/Clear all forms when SUBMIT button is clicked
     reset() {
 
         document.forms['user-input-area'].reset();
@@ -163,7 +163,7 @@ class Budget {
 
 
 
-    // deleting list when the DELETE button is clicked
+    // delete list when DELETE button is clicked
     delete(e) {
 
         e.target.closest('li').remove();
@@ -183,13 +183,13 @@ class Budget {
 
         e.preventDefault();
 
-        // storing the user inputted values
+        // store the user inputs
         let userAmntInput = userValue.querySelector('input').value;
         let userdescriptionInput = addDescription.querySelector('input').value;
 
 
 
-        // creating new elements for the income and expenses lists
+        // create new elements for the income and expenses lists
         const ulList = document.createElement('li');
         const ulListItem = document.createElement('span');
         const ulCalcContainer = document.createElement('span');
@@ -201,7 +201,7 @@ class Budget {
 
 
 
-        // adding classes to the newly created elements
+        // add classes to the newly created elements
         ulList.classList.add('details-container');
         ulListItem.classList.add('list-item');
         ulCalcContainer.classList.add('calc-container');
@@ -214,7 +214,7 @@ class Budget {
 
 
 
-        // appending the new elements to the document
+        // append the new elements to the document
         ulAmntContainer.appendChild(sign);
         ulAmntContainer.appendChild(ulAmntValue);
         ulCalcContainer.appendChild(ulAmntContainer);
@@ -225,19 +225,19 @@ class Budget {
 
 
 
-        // avoiding any empty or below 1 user input
+        // avoid any empty or below 1 user input
         if ((userAmntInput >= 1) && (userdescriptionInput.length > 0)) {
 
             ulAmntValue.innerHTML = parseFloat(userAmntInput).toFixed(2);
             ulListItem.innerHTML = userdescriptionInput;
 
             // check the sign and append info to DOM
-            this.signCheck(ulList);
+            this.appendToDOM(ulList);
 
             this.reset();
 
         } else {
-            alert("Please insert valid inputs");
+            alert("Enter valid inputs!");
         }
 
         this.updateBudget();
@@ -248,15 +248,15 @@ class Budget {
 
 
 
-    signCheck(ul) {
+    appendToDOM(ul) {
         if (signDropdown.value == "plus") {
 
-            // appending info to Income table
+            // append info to Income table
             incomeTable.appendChild(ul);
 
         } else {
 
-            // appending info to Exp table
+            // append info to Exp table
             expensesTable.appendChild(ul);
 
         }
