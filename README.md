@@ -1,6 +1,6 @@
 # Budgeting
 
-[visit](https://iammosun.github.io/Budgeting) webpage.
+See [here](https://iammosun.github.io/Budgeting).
 
 
 # Built With 
