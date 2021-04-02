@@ -55,7 +55,7 @@ body {
 }
 
 .in-and-exp-container {
-  min-width: 70%;
+  min-width: 90%;
   height: 100%;
   display: flex;
   justify-content: space-between;
@@ -82,12 +82,12 @@ body {
 }
 
 .top-income {
-  background-color: rgba(92, 149, 255, 0.6);
+  background-color: rgba(92, 149, 255, 0.55);
   box-shadow: 0 0 3px 1px rgba(128, 128, 128, 1);
 }
 
 .top-expenses {
-  background-color: rgba(237, 1, 1, 0.6);
+  background-color: rgba(237, 1, 1, 0.55);
   box-shadow: 0 0 3px 1px rgba(128, 128, 128, 1);
 }
 
@@ -108,6 +108,7 @@ body {
   height: 2em;
   width: 4em;
   font-size: 0.7em;
+  font-weight: 600;
   border-radius: 0.2em;
   margin-left: 0.3em;
 }
@@ -127,7 +128,7 @@ body {
 
 /* bottom section=============================================================*/
 .bottom-section-container {
-  background-image: linear-gradient(to right, rgba(92, 149, 255, 0.2), rgba(237, 1, 1, 0.1));
+  background-image: linear-gradient(to right, rgba(92, 149, 255, 0.1), rgba(237, 1, 1, 0.1));
   min-height: 60vh;
   width: 100%;
   min-width: 700px;
@@ -225,7 +226,8 @@ padding-left: 0.8em;
 
 .table .percent-calc {
   color: white;
-  background-color: red;
+  font-weight: 600;
+  background-color: rgba(177, 16, 16, 0.2);
   display: grid;
   place-items: center;
 }

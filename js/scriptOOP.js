@@ -160,7 +160,7 @@ class Budget {
                 <span class="calc-container">
                     <span class="ul-amnt-container">
                         <span class="sign"></span>
-                        <span class="amount ul-amnt-value">${this.userAmntInput}</span>
+                        <span class="amount ul-amnt-value">${parseFloat(this.userAmntInput).toFixed(2)}</span>
                     </span>
                     <span class="percent-calc"></span>
                     <img class="delete-btn" src="images/bin.png">
