@@ -38,7 +38,6 @@ class Budget {
 
 
 
-
     // =====================================================UPDATING BUDGET=
 
     // add up Income values at the table
@@ -52,12 +51,14 @@ class Budget {
     }
 
 
+
     // update Total Income at the top section
     incomeTotal() {
         this.calcIncTotal();
 
         totalIncValue.innerHTML = parseFloat(this.incTot).toFixed(2);
     }
+
 
 
     // add up Expenses and percentage values at the table
@@ -72,6 +73,7 @@ class Budget {
             this.calcEachPercent(expVal);
         });
     }
+
 
 
     // calculate percentages at the table and add them to the Total percentage
@@ -95,6 +97,7 @@ class Budget {
     }
 
 
+
     // update Total Expenses and Total Percentage at the top section
     expensesTotal() {
         this.calcExpTotal();
@@ -102,6 +105,7 @@ class Budget {
         totalExpValue.innerHTML = parseFloat(this.expTot).toFixed(2);
         totalPercentValue.innerHTML = parseFloat(this.percentTot).toFixed(1) + '%';
     }
+
 
 
     // calculate FINAL BALANCE at the top section
@@ -121,14 +125,13 @@ class Budget {
     }
 
 
+
     // Update OVERALL Budget
     updateBudget() {
         this.incomeTotal();
         this.expensesTotal();
         this.finalBalance();
     }
-
-
 
 
 
@@ -141,11 +144,12 @@ class Budget {
     }
 
 
-    // delete li
+
     delete(e) {
         e.target.closest('li').remove();
         this.updateBudget();
     };
+
 
 
     appendUserDataToDOM() {
@@ -177,6 +181,7 @@ class Budget {
     }
 
 
+
     submitUserInfo(e) {
         e.preventDefault();
 
@@ -201,7 +206,7 @@ class Budget {
 
 
 
-        // delete list when DELETE button is clicked
+        // delete li
         const deleteBtns = document.querySelectorAll(".delete-btn");
         
         deleteBtns.forEach((btn) => {
