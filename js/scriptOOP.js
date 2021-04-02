@@ -22,7 +22,6 @@ const h2s = document.querySelectorAll('h2');
 
 
 
-
 // MAIN CLASS
 class Budget {
 
