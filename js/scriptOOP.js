@@ -22,12 +22,10 @@ const h2s = document.querySelectorAll('h2');
 
 
 
+
 // MAIN CLASS
 class Budget {
 
-    incValues = [];
-    expValues = [];
-    ulPercent = [];
     incTot;
     expTot;
     percentTot;
@@ -38,6 +36,11 @@ class Budget {
         submitBtn.addEventListener('click', this.submitUserInfo.bind(this));
     }
 
+
+
+
+
+    // =====================================================UPDATING BUDGET=
 
     // add up Income values at the table
     calcIncTotal() {
@@ -119,56 +122,30 @@ class Budget {
     }
 
 
-    // Method called to update the OVERALL Budget
+    // Update OVERALL Budget
     updateBudget() {
-
         this.incomeTotal();
         this.expensesTotal();
         this.finalBalance();
-
     }
 
 
-    // Reset/Clear all forms when SUBMIT button is clicked
+
+
+
+
+    // ====================================COLLECT USER INFO + UPDATE BUDGET=
+
+    // Reset/Clear forms when SUBMIT button is clicked
     resetForms() {
         document.forms['user-input-area'].reset();
     }
 
 
-    // delete list when DELETE button is clicked
+    // delete li
     delete(e) {
         e.target.closest('li').remove();
         this.updateBudget();
-    };
-
-
-
-
-    /* collecting user inputted data and adding them to the DOM=================
-    ===========================================================================*/
-    submitUserInfo(e) {
-        e.preventDefault();
-
-        // store the user inputs
-        this.userAmntInput = userValue.querySelector('input').value;
-        this.userdescriptionInput = addDescription.querySelector('input').value;
-        
-        // validate user inputs
-        if (
-            (this.userAmntInput >= 1) &&
-            (this.userdescriptionInput.length > 0) &&
-            !(this.userdescriptionInput === "")
-        ) {
-
-            this.appendUserDataToDOM();
-            this.resetForms();
-            this.updateBudget();
-
-        } else {
-            alert("Enter valid inputs!");
-        };
-
-        // ulDeleteBtn.addEventListener('click', this.delete.bind(this));
     };
 
 
@@ -192,15 +169,46 @@ class Budget {
         if (signDropdown.value == "plus") {
 
             incomeUl.innerHTML += newLi;
-            this.incValues.push(this.userAmntInput);
 
         } else {
 
             expensesUl.innerHTML += newLi;
-            this.expValues.push(this.userAmntInput);
 
         }
     }
+
+
+    submitUserInfo(e) {
+        e.preventDefault();
+
+        // store the user inputs
+        this.userAmntInput = userValue.querySelector('input').value;
+        this.userdescriptionInput = addDescription.querySelector('input').value;
+        
+        // validate user inputs
+        if (
+            (this.userAmntInput >= 1) &&
+            (this.userdescriptionInput.length > 0) &&
+            !(this.userdescriptionInput === "")
+        ){
+
+            this.appendUserDataToDOM();
+            this.resetForms();
+            this.updateBudget();
+
+        } else {
+            alert("Enter valid inputs!");
+        };
+
+
+
+        // delete list when DELETE button is clicked
+        const deleteBtns = document.querySelectorAll(".delete-btn");
+        
+        deleteBtns.forEach((btn) => {
+            btn.addEventListener('click', this.delete.bind(this));
+        });
+    };  
 };
 
 
