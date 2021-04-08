@@ -22,6 +22,7 @@ const h2s = document.querySelectorAll('h2');
 
 
 
+
 // MAIN CLASS
 class Budget {
 
@@ -30,9 +31,20 @@ class Budget {
     percentTot;
     userAmntInput;
     userdescriptionInput;
+    #deleteBtns;
+   
 
-    constructor() {
+    constructor() { 
+        this._getLocalStorage();
+
         submitBtn.addEventListener('click', this.submitUserInfo.bind(this));
+
+        // delete list
+        this.#deleteBtns = document.querySelectorAll(".delete-btn");
+
+        this.#deleteBtns.forEach((btn) => {
+            btn.addEventListener('click', this.delete.bind(this));
+        });
     }
 
 
@@ -148,6 +160,7 @@ class Budget {
     delete(e) {
         e.target.closest('li').remove();
         this.updateBudget();
+        this._setLocalStorage();
     };
 
 
@@ -199,21 +212,38 @@ class Budget {
             this.appendUserDataToDOM();
             this.resetForms();
             this.updateBudget();
+            this._setLocalStorage();
 
         } else {
             alert("Enter valid inputs!");
         };
 
 
+        // delete list
+        this.#deleteBtns = document.querySelectorAll(".delete-btn");
 
-        // delete li
-        const deleteBtns = document.querySelectorAll(".delete-btn");
-        
-        deleteBtns.forEach((btn) => {
+        this.#deleteBtns.forEach((btn) => {
             btn.addEventListener('click', this.delete.bind(this));
         });
-    };  
+    }
+
+
+    _setLocalStorage() {
+        localStorage.setItem('income', incomeUl.innerHTML);
+        localStorage.setItem('expenses', expensesUl.innerHTML);
+    }
+
+    _getLocalStorage() {
+        incomeUl.innerHTML = localStorage.getItem('income');
+        expensesUl.innerHTML = localStorage.getItem('expenses');
+        this.updateBudget();
+    }
+
+    reset() {
+        localStorage.removeItem('income', 'expenses');
+        location.reload();
+    }
 };
 
-
+ 
 const budget1 = new Budget();
