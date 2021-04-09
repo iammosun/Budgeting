@@ -1,7 +1,7 @@
 
-/*====================================================================================================
-In Html, Uncomment ""<script src="js/scriptFP.js" defer></script>"" instead for functional programming
-=====================================================================================================*/
+/*===================================================================================
+Uncomment ""<script src="js/scriptFP.js" defer></script>"" for functional programming
+====================================================================================*/
 
 
 // Global Constants
@@ -39,12 +39,7 @@ class Budget {
 
         submitBtn.addEventListener('click', this.submitUserInfo.bind(this));
 
-        // delete list
-        this.#deleteBtns = document.querySelectorAll(".delete-btn");
-
-        this.#deleteBtns.forEach((btn) => {
-            btn.addEventListener('click', this.delete.bind(this));
-        });
+        this.delete();
     }
 
 
@@ -157,10 +152,16 @@ class Budget {
 
 
 
-    delete(e) {
-        e.target.closest('li').remove();
-        this.updateBudget();
-        this._setLocalStorage();
+    delete() {
+        this.#deleteBtns = document.querySelectorAll(".delete-btn");
+
+        this.#deleteBtns.forEach((btn) => {
+            btn.addEventListener('click', (e) => {
+                e.target.closest('li').remove();
+                this.updateBudget();
+                this._setLocalStorage();
+            });
+        });
     };
 
 
@@ -219,12 +220,7 @@ class Budget {
         };
 
 
-        // delete list
-        this.#deleteBtns = document.querySelectorAll(".delete-btn");
-
-        this.#deleteBtns.forEach((btn) => {
-            btn.addEventListener('click', this.delete.bind(this));
-        });
+        this.delete();
     }
 
 
@@ -233,11 +229,13 @@ class Budget {
         localStorage.setItem('expenses', expensesUl.innerHTML);
     }
 
+
     _getLocalStorage() {
         incomeUl.innerHTML = localStorage.getItem('income');
         expensesUl.innerHTML = localStorage.getItem('expenses');
         this.updateBudget();
     }
+
 
     reset() {
         localStorage.removeItem('income', 'expenses');
@@ -246,4 +244,4 @@ class Budget {
 };
 
  
-const budget1 = new Budget();
+new Budget();
