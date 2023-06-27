@@ -32,9 +32,9 @@ class Budget {
     userAmntInput;
     userdescriptionInput;
     #deleteBtns;
-   
 
-    constructor() { 
+
+    constructor() {
         this._getLocalStorage();
 
         submitBtn.addEventListener('click', this.submitUserInfo.bind(this));
@@ -202,13 +202,13 @@ class Budget {
         // store the user inputs
         this.userAmntInput = userValue.querySelector('input').value;
         this.userdescriptionInput = addDescription.querySelector('input').value;
-        
+
         // validate user inputs
         if (
             (this.userAmntInput >= 1) &&
             (this.userdescriptionInput.length > 0) &&
             !(this.userdescriptionInput === "")
-        ){
+        ) {
 
             this.appendUserDataToDOM();
             this.resetForms();
@@ -243,5 +243,5 @@ class Budget {
     }
 };
 
- 
+
 new Budget();
