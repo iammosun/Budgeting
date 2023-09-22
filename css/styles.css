@@ -130,7 +130,6 @@ body {
 .bottom-section-container {
   background-image: linear-gradient(to right, rgba(92, 149, 255, 0.1), rgba(237, 1, 1, 0.1));
   min-height: 60vh;
-  width: 100%;
   min-width: 700px;
 }
 
@@ -193,7 +192,9 @@ padding-left: 0.8em;
 .inc-and-exp-table {
   display: grid;
   place-items: center;
+  margin: auto;
   margin-top: 3em;
+  width: 60%;
 }
 
 .inc-and-exp-table-container {
